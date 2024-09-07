@@ -7,8 +7,8 @@
 I highly recommend putting the software inside the following path so that it runs immediately upon restarting the computer:
 "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup".
 
-![1.png](..%2F..%2F..%2F..%2F..%2FPictures%2F1.png)
+![1.png](junk%2F1.png)
 
-![2.png](..%2F..%2F..%2F..%2F..%2FPictures%2F2.png)
+![2.png](junk%2F2.png)
 
 [AD.mp4](AD.mp4)

@@ -12,11 +12,10 @@ for future developers, this is the value that get changed in the registry when u
 inside the key:
 "SOFTWARE/Microsoft/Input/Locales"
 """
-
+import os
 import webbrowser
 import requests
 import ctypes
-import sys
 import time
 import winreg
 import logging
@@ -25,7 +24,7 @@ from PIL import Image, ImageDraw
 from pathlib import Path
 from pystray import Icon, MenuItem, Menu
 
-__version__ = 'v1.1.2'
+__version__ = 'v1.1.3'
 
 DEBUG = False
 # Set up logging
@@ -201,9 +200,10 @@ def on_quit(icon, item):
     """
     stop_event.set()  # Signal all threads to stop
     logging.info("Exiting application.")
+    kernel32.CloseHandle(taskbar_manager.taskbar_handle)  # Close the taskbar handle
     icon.stop()  # Stop the tray icon
     time.sleep(2)  # Short delay before exit
-    sys.exit(0)
+    os._exit(0)
 
 
 def setup_tray_icon(taskbar_manager):

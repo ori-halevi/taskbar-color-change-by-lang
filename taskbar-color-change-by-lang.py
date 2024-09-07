@@ -25,7 +25,7 @@ from PIL import Image, ImageDraw
 from pathlib import Path
 from pystray import Icon, MenuItem, Menu
 
-__version__ = 'v1.1.0'
+__version__ = 'v1.1.2'
 
 DEBUG = False
 # Set up logging

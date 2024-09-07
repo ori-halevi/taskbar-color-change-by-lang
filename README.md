@@ -6,3 +6,4 @@
 
 I highly recommend putting the software inside the following path so that it runs immediately upon restarting the computer:
 "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup"
+[AD.mp4](AD.mp4)

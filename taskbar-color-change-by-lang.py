@@ -30,7 +30,6 @@ logging.basicConfig(level=logging.DEBUG if DEBUG else None,
 
 # Defining the constants for registry notifications and wait statuses
 REG_NOTIFY_CHANGE_LAST_SET = 0x00000004  # Notifies when the last write time of the key or value is changed
-WAIT_TIMEOUT = 0x00000102  # Timeout status for wait functions
 KEY_NOTIFY = 0x00000010  # Allows a registry key to be monitored for changes
 
 # Loads the Windows API libraries
@@ -133,10 +132,8 @@ def monitor_registry_key(hkey, subkey, taskbar_manager):
     try:
         while not stop_event.is_set():
             # Wait for event or until stopped
-            wait_result = WaitForSingleObject(event, 500)  # Wait for 500 ms
-            if wait_result == WAIT_TIMEOUT:
-                continue  # Continue waiting if timeout occurs
-            elif wait_result == 0:  # 0 indicates that the event occurred
+            wait_result = WaitForSingleObject(event, -1)  # Wait for -1 ms (infinity)
+            if wait_result == 0:  # 0 indicates that the event occurred
                 logging.info("Registry key has been modified.")
                 taskbar_manager.toggle_color_prevalence()  # Toggle color on taskbar
                 # Register again to continue receiving notifications

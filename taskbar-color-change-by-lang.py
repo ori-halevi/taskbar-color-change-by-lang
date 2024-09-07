@@ -13,6 +13,8 @@ inside the key:
 "SOFTWARE/Microsoft/Input/Locales"
 """
 
+import webbrowser
+import requests
 import ctypes
 import sys
 import time
@@ -22,6 +24,8 @@ import threading
 from PIL import Image, ImageDraw
 from pathlib import Path
 from pystray import Icon, MenuItem, Menu
+
+__version__ = '1.1.0'
 
 DEBUG = False
 # Set up logging
@@ -99,6 +103,29 @@ class TaskbarManager:
 
 # Global stop event to control the monitoring thread
 stop_event = threading.Event()
+
+
+def check_for_updates(current_version):
+    """
+    Checks the latest release version from GitHub and compares it with the current version.
+    """
+    github_api_url = "https://api.github.com/repos/ori-halevi/taskbar-color-change-by-lang/releases/latest"
+    try:
+        response = requests.get(github_api_url)
+        response.raise_for_status()
+        latest_version = response.json()["tag_name"]
+        if latest_version != current_version:
+            return latest_version
+    except requests.RequestException as e:
+        logging.error(f"Error checking for updates: {e}")
+    return None
+
+def open_git_releases():
+    """
+    Opens the GitHub releases page in the default web browser when the user selects the 'Check for Updates' menu item.
+    """
+    github_releases_url = "https://github.com/ori-halevi/taskbar-color-change-by-lang/releases"
+    webbrowser.open(github_releases_url)
 
 
 def monitor_registry_key(hkey, subkey, taskbar_manager):
@@ -194,6 +221,8 @@ def setup_tray_icon(taskbar_manager):
     # Define the menu for the tray icon
     menu = Menu(
         MenuItem('Toggle Color', lambda _: taskbar_manager.toggle_color_prevalence()),  # Adding the toggle color option
+        MenuItem('Check out more versions', lambda _: open_git_releases()),
+        # Adding the check updates option
         MenuItem('Quit', on_quit)  # Adding the quit option
     )
 
@@ -203,7 +232,20 @@ def setup_tray_icon(taskbar_manager):
     return icon
 
 
+def show_update_notification(icon, latest_version):
+    """
+    Shows a popup notification in the tray icon if a new version is available.
+    """
+    icon.notify(f"גרסה חדשה זמינה: {latest_version}!", title="עדכון זמין")
+
+
 if __name__ == "__main__":
     taskbar_manager = TaskbarManager()  # Initialize the taskbar manager
     tray_icon = setup_tray_icon(taskbar_manager)  # Set up the system tray icon
+
+    # Check for updates when the program starts
+    latest_version = check_for_updates(__version__)
+    if latest_version:
+        show_update_notification(tray_icon, latest_version)
+
     monitor_registry_key(hkey, subkey, taskbar_manager)  # Start monitoring registry key changes

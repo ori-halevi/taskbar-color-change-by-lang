@@ -13,6 +13,7 @@ inside the key:
 "SOFTWARE/Microsoft/Input/Locales"
 """
 import os
+import json
 import webbrowser
 import requests
 import ctypes
@@ -23,6 +24,7 @@ import threading
 from PIL import Image, ImageDraw
 from pathlib import Path
 from pystray import Icon, MenuItem, Menu
+from pystray import MenuItem as item, Menu, Icon
 
 __version__ = 'v1.1.3'
 
@@ -59,6 +61,22 @@ WaitForSingleObject.restype = DWORD
 # Creating a registry key
 hkey = winreg.HKEY_LOCAL_MACHINE
 subkey = r"SOFTWARE\WOW6432Node\Microsoft\Input\Locales"  # Path to registry key for input locales
+
+
+# This section is for monitor the current lang.
+# Load Windows API libraries
+advapi32 = ctypes.WinDLL('advapi32')  # Windows API for registry functions
+kernel32 = ctypes.WinDLL('kernel32')  # Core Windows API
+user32 = ctypes.WinDLL('user32')  # Windows API for user interactions
+
+# Function to get the current keyboard layout
+GetKeyboardLayout = user32.GetKeyboardLayout
+GetKeyboardLayout.argtypes = [ctypes.c_ulong]
+GetKeyboardLayout.restype = ctypes.c_ulong
+
+# Function to get the handle of the foreground window
+GetForegroundWindow = user32.GetForegroundWindow
+GetForegroundWindow.restype = ctypes.c_void_p
 
 
 class TaskbarManager:
@@ -99,6 +117,19 @@ class TaskbarManager:
         """
         self.user32.SendMessageW(self.taskbar_handle, 0x001A, 0, "ImmersiveColorSet")  # Refresh command to taskbar
 
+    def get_is_ColorPrevalence_on_or_off(self):
+        """
+        :return: 1 if ColorPrevalence is on, and 0 otherwise.
+        """
+        try:
+            with winreg.OpenKey(winreg.HKEY_CURRENT_USER, self.registry_path, 0,
+                                winreg.KEY_READ | winreg.KEY_WRITE) as key:
+                # Read the current value
+                current_value = winreg.QueryValueEx(key, self.value_name)[0]
+                return current_value
+        except FileNotFoundError:
+            logging.error(f"something went wrong!")
+
 
 # Global stop event to control the monitoring thread
 stop_event = threading.Event()
@@ -119,12 +150,67 @@ def check_for_updates(current_version):
         logging.error(f"Error checking for updates: {e}")
     return None
 
+
 def open_git_releases():
     """
     Opens the GitHub releases page in the default web browser when the user selects the 'Check for Updates' menu item.
     """
     github_releases_url = "https://github.com/ori-halevi/taskbar-color-change-by-lang/releases"
     webbrowser.open(github_releases_url)
+
+
+###
+def get_preferences_file():
+    appdata_path = os.getenv('LOCALAPPDATA')  # מקבל את הנתיב לתיקיית AppData המקומית
+    app_folder = os.path.join(appdata_path, "taskbar-color-change-by-lang")
+    os.makedirs(app_folder, exist_ok=True)  # יוצר את התיקייה אם היא לא קיימת
+    return os.path.join(app_folder, "user_preferences.json")
+
+def load_user_preferences():
+    preferences_file = get_preferences_file()
+    if not os.path.exists(preferences_file):
+        save_user_preferences("English")
+        return "English"  # ברירת מחדל - אנגלית אם הקובץ לא קיים
+    try:
+        with open(preferences_file, 'r') as f:
+            return json.load(f)["preferred_language"]
+    except:
+        save_user_preferences("English")
+        return "English"
+
+def save_user_preferences(preferred_language):
+    preferences = {"preferred_language": preferred_language}
+    preferences_file = get_preferences_file()
+    with open(preferences_file, 'w') as f:
+        json.dump(preferences, f)
+
+
+###
+
+
+
+def is_caps_lock_on():
+    """
+    Checks if the user has the caps lock on.
+    :return: True or False
+    """
+    return ctypes.WinDLL("User32.dll").GetKeyState(0x14) & 0xffff != 0
+
+
+def get_current_language():
+    """
+    Returns the current keyboard layout language of the foreground window.
+    """
+    hwnd = GetForegroundWindow()
+    layout = GetKeyboardLayout(ctypes.windll.user32.GetWindowThreadProcessId(hwnd, None))
+    language_id = layout & 0xFFFF  # Extract the low-order word (language ID)
+
+    buffer = ctypes.create_unicode_buffer(100)
+    if ctypes.windll.kernel32.GetLocaleInfoW(language_id, 0x00000002, buffer, len(buffer)):
+        return buffer.value
+    else:
+        logging.error("Could not retrieve the current keyboard layout language.")
+        return None
 
 
 def monitor_registry_key(hkey, subkey, taskbar_manager):
@@ -206,31 +292,60 @@ def on_quit(icon, item):
     os._exit(0)
 
 
+
+
 def setup_tray_icon(taskbar_manager):
     """
     Sets up the system tray icon with options to toggle color and quit the application.
     """
+    # רשימת השפות הנתמכות
+    supported_languages = ['English', 'Hebrew', 'French', 'Spanish']
+
+    # משתנה לשמירת השפה הנוכחית עם סימן V
+    preferred_language = 'י'  # ברירת מחדל
+
+    # יצירת תפריט עם רשימת השפות
+    def set_preferred_language(language):
+        nonlocal preferred_language
+        preferred_language = language
+        print(f"Preferred language set to: {preferred_language}")
+        # לאחר שינוי השפה יש לעדכן את התפריט כולו
+        icon.update_menu()
+
+    # פונקציה ליצירת פריט תפריט עבור כל שפה
+    def create_language_item(language):
+        return item(
+            f"{language} {'✔' if language == preferred_language else ''}",
+            lambda: set_preferred_language(language)
+        )
+
+    # יצירת תפריט השפות
+    def language_menu():
+        return Menu(*(create_language_item(lang) for lang in supported_languages))
+
     try:
-        # Try loading an existing icon image
+        # נסיון לטעון אייקון קיים
         icon_path = Path(__file__).resolve().parent / 'windows-11-change-taskbar-color.png'
         icon_image = Image.open(icon_path)
     except FileNotFoundError:
-        # Create a default icon if the file is not found
+        # יצירת אייקון ברירת מחדל במקרה שהקובץ לא נמצא
         icon_image = create_image(64, 64, 'purple', 'lightblue')
 
-    # Define the menu for the tray icon
+    # הגדרת התפריט עבור אייקון המגש
     menu = Menu(
-        MenuItem('Toggle Color', lambda _: taskbar_manager.toggle_color_prevalence()),  # Adding the toggle color option
-        MenuItem('Check out more versions', lambda _: open_git_releases()),
-        # Adding the check updates option
-        MenuItem('Quit', on_quit)  # Adding the quit option
+        item('Change Preferred Language', language_menu()),  # תפריט השפות
+        item('Toggle Color', lambda: taskbar_manager.toggle_color_prevalence()),  # אפשרות להחליף צבע
+        item('Check out more versions', lambda: open_git_releases()),  # אפשרות לבדוק עדכונים
+        item('Quit', lambda: icon.stop())  # אפשרות לצאת
     )
 
-    # Set up and start the tray icon
+    # יצירת אייקון המגש
     icon = Icon("Language Toggle", icon_image, "Language Toggle", menu)
-    threading.Thread(target=icon.run, daemon=True).start()
-    return icon
 
+    # הפעלת אייקון המגש עם חוט נפרד
+    threading.Thread(target=icon.run, daemon=True).start()
+
+    return icon
 
 def show_update_notification(icon, latest_version):
     """
@@ -241,6 +356,24 @@ def show_update_notification(icon, latest_version):
 
 if __name__ == "__main__":
     taskbar_manager = TaskbarManager()  # Initialize the taskbar manager
+
+    print(get_current_language().split()[0])
+    print(load_user_preferences())
+
+    print(taskbar_manager.get_is_ColorPrevalence_on_or_off())
+
+    if load_user_preferences() == get_current_language().split()[0]:
+        print("im here")
+    if load_user_preferences() == get_current_language().split()[0] and taskbar_manager.get_is_ColorPrevalence_on_or_off():
+        taskbar_manager.toggle_color_prevalence()
+        print("1111")
+    elif load_user_preferences() != get_current_language().split()[0] and not taskbar_manager.get_is_ColorPrevalence_on_or_off():
+        taskbar_manager.toggle_color_prevalence()
+        print("22222")
+
+
+
+
     tray_icon = setup_tray_icon(taskbar_manager)  # Set up the system tray icon
 
     # Check for updates when the program starts

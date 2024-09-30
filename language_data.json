@@ -1,0 +1,1370 @@
+[
+    {
+        "Hex": "0004",
+        "Dec": 4,
+        "Country code": "zh-CHS",
+        "Meaning": "Chinese - Simplified"
+    },
+    {
+        "Hex": "0401",
+        "Dec": 1025,
+        "Country code": "ar-SA",
+        "Meaning": "Arabic - Saudi Arabia"
+    },
+    {
+        "Hex": "0402",
+        "Dec": 1026,
+        "Country code": "bg-BG",
+        "Meaning": "Bulgarian - Bulgaria"
+    },
+    {
+        "Hex": "0403",
+        "Dec": 1027,
+        "Country code": "ca-ES",
+        "Meaning": "Catalan - Spain"
+    },
+    {
+        "Hex": "0404",
+        "Dec": 1028,
+        "Country code": "zh-TW",
+        "Meaning": "Chinese (Traditional) - Taiwan"
+    },
+    {
+        "Hex": "0405",
+        "Dec": 1029,
+        "Country code": "cs-CZ",
+        "Meaning": "Czech - Czech Republic"
+    },
+    {
+        "Hex": "0406",
+        "Dec": 1030,
+        "Country code": "da-DK",
+        "Meaning": "Danish - Denmark"
+    },
+    {
+        "Hex": "0407",
+        "Dec": 1031,
+        "Country code": "de-DE",
+        "Meaning": "German - Germany"
+    },
+    {
+        "Hex": "0408",
+        "Dec": 1032,
+        "Country code": "el-GR",
+        "Meaning": "Greek - Greece"
+    },
+    {
+        "Hex": "0409",
+        "Dec": 1033,
+        "Country code": "en-US",
+        "Meaning": "English - United States"
+    },
+    {
+        "Hex": "040A",
+        "Dec": 1034,
+        "Country code": "es-ES_tradnl",
+        "Meaning": "Spanish - Spain"
+    },
+    {
+        "Hex": "040B",
+        "Dec": 1035,
+        "Country code": "fi-FI",
+        "Meaning": "Finnish - Finland"
+    },
+    {
+        "Hex": "040C",
+        "Dec": 1036,
+        "Country code": "fr-FR",
+        "Meaning": "French - France"
+    },
+    {
+        "Hex": "040D",
+        "Dec": 1037,
+        "Country code": "he-IL",
+        "Meaning": "Hebrew - Israel"
+    },
+    {
+        "Hex": "040E",
+        "Dec": 1038,
+        "Country code": "hu-HU",
+        "Meaning": "Hungarian - Hungary"
+    },
+    {
+        "Hex": "040F",
+        "Dec": 1039,
+        "Country code": "is-IS",
+        "Meaning": "Icelandic - Iceland"
+    },
+    {
+        "Hex": "0410",
+        "Dec": 1040,
+        "Country code": "it-IT",
+        "Meaning": "Italian - Italy"
+    },
+    {
+        "Hex": "0411",
+        "Dec": 1041,
+        "Country code": "ja-JP",
+        "Meaning": "Japanese - Japan"
+    },
+    {
+        "Hex": "0412",
+        "Dec": 1042,
+        "Country code": "ko-KR",
+        "Meaning": "Korean - Korea"
+    },
+    {
+        "Hex": "0413",
+        "Dec": 1043,
+        "Country code": "nl-NL",
+        "Meaning": "Dutch - Netherlands"
+    },
+    {
+        "Hex": "0414",
+        "Dec": 1044,
+        "Country code": "nb-NO",
+        "Meaning": "Norwegian (Bokmål) - Norway"
+    },
+    {
+        "Hex": "0415",
+        "Dec": 1045,
+        "Country code": "pl-PL",
+        "Meaning": "Polish - Poland"
+    },
+    {
+        "Hex": "0416",
+        "Dec": 1046,
+        "Country code": "pt-BR",
+        "Meaning": "Portuguese - Brazil"
+    },
+    {
+        "Hex": "0417",
+        "Dec": 1047,
+        "Country code": "rm-CH",
+        "Meaning": "Romansh - Switzerland"
+    },
+    {
+        "Hex": "0418",
+        "Dec": 1048,
+        "Country code": "ro-RO",
+        "Meaning": "Romanian - Romania"
+    },
+    {
+        "Hex": "0419",
+        "Dec": 1049,
+        "Country code": "ru-RU",
+        "Meaning": "Russian - Russia"
+    },
+    {
+        "Hex": "041A",
+        "Dec": 1050,
+        "Country code": "hr-HR",
+        "Meaning": "Croatian - Croatia"
+    },
+    {
+        "Hex": "041B",
+        "Dec": 1051,
+        "Country code": "sk-SK",
+        "Meaning": "Slovak - Slovakia"
+    },
+    {
+        "Hex": "041C",
+        "Dec": 1052,
+        "Country code": "sq-AL",
+        "Meaning": "Albanian - Albania"
+    },
+    {
+        "Hex": "041D",
+        "Dec": 1053,
+        "Country code": "sv-SE",
+        "Meaning": "Swedish - Sweden"
+    },
+    {
+        "Hex": "041E",
+        "Dec": 1054,
+        "Country code": "th-TH",
+        "Meaning": "Thai - Thailand"
+    },
+    {
+        "Hex": "041F",
+        "Dec": 1055,
+        "Country code": "tr-TR",
+        "Meaning": "Turkish - Turkey"
+    },
+    {
+        "Hex": "0420",
+        "Dec": 1056,
+        "Country code": "ur-PK",
+        "Meaning": "Urdu - Pakistan"
+    },
+    {
+        "Hex": "0421",
+        "Dec": 1057,
+        "Country code": "id-ID",
+        "Meaning": "Indonesian - Indonesia"
+    },
+    {
+        "Hex": "0422",
+        "Dec": 1058,
+        "Country code": "uk-UA",
+        "Meaning": "Ukrainian - Ukraine"
+    },
+    {
+        "Hex": "0423",
+        "Dec": 1059,
+        "Country code": "be-BY",
+        "Meaning": "Belarusian - Belarus"
+    },
+    {
+        "Hex": "0424",
+        "Dec": 1060,
+        "Country code": "sl-SI",
+        "Meaning": "Slovenian - Slovenia"
+    },
+    {
+        "Hex": "0425",
+        "Dec": 1061,
+        "Country code": "et-EE",
+        "Meaning": "Estonian - Estonia"
+    },
+    {
+        "Hex": "0426",
+        "Dec": 1062,
+        "Country code": "lv-LV",
+        "Meaning": "Latvian - Latvia"
+    },
+    {
+        "Hex": "0427",
+        "Dec": 1063,
+        "Country code": "lt-LT",
+        "Meaning": "Lithuanian - Lithuanian"
+    },
+    {
+        "Hex": "0428",
+        "Dec": 1064,
+        "Country code": "tg-Cyrl-TJ",
+        "Meaning": "Tajik (Cyrillic) - Tajikistan"
+    },
+    {
+        "Hex": "0429",
+        "Dec": 1065,
+        "Country code": "fa-IR",
+        "Meaning": "Persian - Iran"
+    },
+    {
+        "Hex": "042A",
+        "Dec": 1066,
+        "Country code": "vi-VN",
+        "Meaning": "Vietnamese - Vietnam"
+    },
+    {
+        "Hex": "042B",
+        "Dec": 1067,
+        "Country code": "hy-AM",
+        "Meaning": "Armenian - Armenia"
+    },
+    {
+        "Hex": "042C",
+        "Dec": 1068,
+        "Country code": "az-Latn-AZ",
+        "Meaning": "Azeri (Latin) - Azerbaijan"
+    },
+    {
+        "Hex": "042D",
+        "Dec": 1069,
+        "Country code": "eu-ES",
+        "Meaning": "Basque - Basque"
+    },
+    {
+        "Hex": "042E",
+        "Dec": 1070,
+        "Country code": "hsb-DE",
+        "Meaning": "Upper Sorbian - Germany"
+    },
+    {
+        "Hex": "042F",
+        "Dec": 1071,
+        "Country code": "mk-MK",
+        "Meaning": "Macedonian - Macedonia"
+    },
+    {
+        "Hex": "0432",
+        "Dec": 1074,
+        "Country code": "tn-ZA",
+        "Meaning": "Setswana / Tswana - South Africa"
+    },
+    {
+        "Hex": "0434",
+        "Dec": 1076,
+        "Country code": "xh-ZA",
+        "Meaning": "isiXhosa - South Africa"
+    },
+    {
+        "Hex": "0435",
+        "Dec": 1077,
+        "Country code": "zu-ZA",
+        "Meaning": "isiZulu - South Africa"
+    },
+    {
+        "Hex": "0436",
+        "Dec": 1078,
+        "Country code": "af-ZA",
+        "Meaning": "Afrikaans - South Africa"
+    },
+    {
+        "Hex": "0437",
+        "Dec": 1079,
+        "Country code": "ka-GE",
+        "Meaning": "Georgian - Georgia"
+    },
+    {
+        "Hex": "0438",
+        "Dec": 1080,
+        "Country code": "fo-FO",
+        "Meaning": "Faroese - Faroe Islands"
+    },
+    {
+        "Hex": "0439",
+        "Dec": 1081,
+        "Country code": "hi-IN",
+        "Meaning": "Hindi - India"
+    },
+    {
+        "Hex": "043A",
+        "Dec": 1082,
+        "Country code": "mt-MT",
+        "Meaning": "Maltese - Malta"
+    },
+    {
+        "Hex": "043B",
+        "Dec": 1083,
+        "Country code": "se-NO",
+        "Meaning": "Sami (Northern) - Norway"
+    },
+    {
+        "Hex": "043e",
+        "Dec": 1086,
+        "Country code": "ms-MY",
+        "Meaning": "Malay - Malaysia"
+    },
+    {
+        "Hex": "043F",
+        "Dec": 1087,
+        "Country code": "kk-KZ",
+        "Meaning": "Kazakh - Kazakhstan"
+    },
+    {
+        "Hex": "0440",
+        "Dec": 1088,
+        "Country code": "ky-KG",
+        "Meaning": "Kyrgyz - Kyrgyzstan"
+    },
+    {
+        "Hex": "0441",
+        "Dec": 1089,
+        "Country code": "sw-KE",
+        "Meaning": "Swahili - Kenya"
+    },
+    {
+        "Hex": "0442",
+        "Dec": 1090,
+        "Country code": "tk-TM",
+        "Meaning": "Turkmen - Turkmenistan"
+    },
+    {
+        "Hex": "0443",
+        "Dec": 1091,
+        "Country code": "uz-Latn-UZ",
+        "Meaning": "Uzbek (Latin) - Uzbekistan"
+    },
+    {
+        "Hex": "0444",
+        "Dec": 1092,
+        "Country code": "tt-RU",
+        "Meaning": "Tatar - Russia"
+    },
+    {
+        "Hex": "0445",
+        "Dec": 1093,
+        "Country code": "bn-IN",
+        "Meaning": "Bangla - Bangladesh"
+    },
+    {
+        "Hex": "0446",
+        "Dec": 1094,
+        "Country code": "pa-IN",
+        "Meaning": "Punjabi - India"
+    },
+    {
+        "Hex": "0447",
+        "Dec": 1095,
+        "Country code": "gu-IN",
+        "Meaning": "Gujarati - India"
+    },
+    {
+        "Hex": "0448",
+        "Dec": 1096,
+        "Country code": "or-IN",
+        "Meaning": "Oriya - India"
+    },
+    {
+        "Hex": "0449",
+        "Dec": 1097,
+        "Country code": "ta-IN",
+        "Meaning": "Tamil - India"
+    },
+    {
+        "Hex": "044A",
+        "Dec": 1098,
+        "Country code": "te-IN",
+        "Meaning": "Telugu - India"
+    },
+    {
+        "Hex": "044B",
+        "Dec": 1099,
+        "Country code": "kn-IN",
+        "Meaning": "Kannada - India"
+    },
+    {
+        "Hex": "044C",
+        "Dec": 1100,
+        "Country code": "ml-IN",
+        "Meaning": "Malayalam - India"
+    },
+    {
+        "Hex": "044D",
+        "Dec": 1101,
+        "Country code": "as-IN",
+        "Meaning": "Assamese - India"
+    },
+    {
+        "Hex": "044E",
+        "Dec": 1102,
+        "Country code": "mr-IN",
+        "Meaning": "Marathi - India"
+    },
+    {
+        "Hex": "044F",
+        "Dec": 1103,
+        "Country code": "sa-IN",
+        "Meaning": "Sanskrit - India"
+    },
+    {
+        "Hex": "0450",
+        "Dec": 1104,
+        "Country code": "mn-MN",
+        "Meaning": "Mongolian (Cyrillic) - Mongolia"
+    },
+    {
+        "Hex": "0451",
+        "Dec": 1105,
+        "Country code": "bo-CN",
+        "Meaning": "Tibetan - China"
+    },
+    {
+        "Hex": "0452",
+        "Dec": 1106,
+        "Country code": "cy-GB",
+        "Meaning": "Welsh - United Kingdom"
+    },
+    {
+        "Hex": "0453",
+        "Dec": 1107,
+        "Country code": "km-KH",
+        "Meaning": "Khmer - Cambodia"
+    },
+    {
+        "Hex": "0454",
+        "Dec": 1108,
+        "Country code": "lo-LA",
+        "Meaning": "Lao - Lao PDR"
+    },
+    {
+        "Hex": "0456",
+        "Dec": 1110,
+        "Country code": "gl-ES",
+        "Meaning": "Galician - Spain"
+    },
+    {
+        "Hex": "0457",
+        "Dec": 1111,
+        "Country code": "kok-IN",
+        "Meaning": "Konkani - India"
+    },
+    {
+        "Hex": "0459",
+        "Dec": 1113,
+        "Country code": "sd-Deva-IN",
+        "Meaning": "(reserved) - (reserved)"
+    },
+    {
+        "Hex": "045A",
+        "Dec": 1114,
+        "Country code": "syr-SY",
+        "Meaning": "Syriac - Syria"
+    },
+    {
+        "Hex": "045B",
+        "Dec": 1115,
+        "Country code": "si-LK",
+        "Meaning": "Sinhala - Sri Lanka"
+    },
+    {
+        "Hex": "045C",
+        "Dec": 1116,
+        "Country code": "chr-Cher-US",
+        "Meaning": "Cherokee - Cherokee"
+    },
+    {
+        "Hex": "045D",
+        "Dec": 1117,
+        "Country code": "iu-Cans-CA",
+        "Meaning": "Inuktitut (Canadian_Syllabics) - Canada"
+    },
+    {
+        "Hex": "045E",
+        "Dec": 1118,
+        "Country code": "am-ET",
+        "Meaning": "Amharic - Ethiopia"
+    },
+    {
+        "Hex": "0461",
+        "Dec": 1121,
+        "Country code": "ne-NP",
+        "Meaning": "Nepali - Nepal"
+    },
+    {
+        "Hex": "0462",
+        "Dec": 1122,
+        "Country code": "fy-NL",
+        "Meaning": "Frisian - Netherlands"
+    },
+    {
+        "Hex": "0463",
+        "Dec": 1123,
+        "Country code": "ps-AF",
+        "Meaning": "Pashto - Afghanistan"
+    },
+    {
+        "Hex": "0464",
+        "Dec": 1124,
+        "Country code": "fil-PH",
+        "Meaning": "Filipino - Philippines"
+    },
+    {
+        "Hex": "0465",
+        "Dec": 1125,
+        "Country code": "dv-MV",
+        "Meaning": "Divehi - Maldives"
+    },
+    {
+        "Hex": "0468",
+        "Dec": 1128,
+        "Country code": "ha-Latn-NG",
+        "Meaning": "Hausa - Nigeria"
+    },
+    {
+        "Hex": "046A",
+        "Dec": 1130,
+        "Country code": "yo-NG",
+        "Meaning": "Yoruba - Nigeria"
+    },
+    {
+        "Hex": "046B",
+        "Dec": 1131,
+        "Country code": "quz-BO",
+        "Meaning": "Quechua - Bolivia"
+    },
+    {
+        "Hex": "046C",
+        "Dec": 1132,
+        "Country code": "nso-ZA",
+        "Meaning": "Sesotho sa Leboa - South Africa"
+    },
+    {
+        "Hex": "046D",
+        "Dec": 1133,
+        "Country code": "ba-RU",
+        "Meaning": "Bashkir - Russia"
+    },
+    {
+        "Hex": "046E",
+        "Dec": 1134,
+        "Country code": "lb-LU",
+        "Meaning": "Luxembourgish - Luxembourg"
+    },
+    {
+        "Hex": "046F",
+        "Dec": 1135,
+        "Country code": "kl-GL",
+        "Meaning": "Greenlandic - Greenland"
+    },
+    {
+        "Hex": "0470",
+        "Dec": 1136,
+        "Country code": "ig-NG",
+        "Meaning": "Igbo - Nigeria"
+    },
+    {
+        "Hex": "0473",
+        "Dec": 1139,
+        "Country code": "ti-ET",
+        "Meaning": "Tigrinya - Ethiopia"
+    },
+    {
+        "Hex": "0475",
+        "Dec": 1141,
+        "Country code": "haw-US",
+        "Meaning": "Hawiian - United States"
+    },
+    {
+        "Hex": "0478",
+        "Dec": 1144,
+        "Country code": "ii-CN",
+        "Meaning": "Yi - China"
+    },
+    {
+        "Hex": "047A",
+        "Dec": 1146,
+        "Country code": "arn-CL",
+        "Meaning": "Mapudungun - Chile"
+    },
+    {
+        "Hex": "047C",
+        "Dec": 1148,
+        "Country code": "moh-CA",
+        "Meaning": "Mohawk - Canada"
+    },
+    {
+        "Hex": "047E",
+        "Dec": 1150,
+        "Country code": "br-FR",
+        "Meaning": "Breton - France"
+    },
+    {
+        "Hex": "0480",
+        "Dec": 1152,
+        "Country code": "ug-CN",
+        "Meaning": "Uyghur - China"
+    },
+    {
+        "Hex": "0481",
+        "Dec": 1153,
+        "Country code": "mi-NZ",
+        "Meaning": "Maori - New Zealand"
+    },
+    {
+        "Hex": "0482",
+        "Dec": 1154,
+        "Country code": "oc-FR",
+        "Meaning": "Occitan - France"
+    },
+    {
+        "Hex": "0483",
+        "Dec": 1155,
+        "Country code": "co-FR",
+        "Meaning": "Corsican - France"
+    },
+    {
+        "Hex": "0484",
+        "Dec": 1156,
+        "Country code": "gsw-FR",
+        "Meaning": "Alsatian - France"
+    },
+    {
+        "Hex": "0485",
+        "Dec": 1157,
+        "Country code": "sah-RU",
+        "Meaning": "Sakha - Russia"
+    },
+    {
+        "Hex": "0486",
+        "Dec": 1158,
+        "Country code": "quc-Latn-GT",
+        "Meaning": "K'iche - Guatemala"
+    },
+    {
+        "Hex": "0487",
+        "Dec": 1159,
+        "Country code": "rw-RW",
+        "Meaning": "Kinyarwanda - Rwanda"
+    },
+    {
+        "Hex": "0488",
+        "Dec": 1160,
+        "Country code": "wo-SN",
+        "Meaning": "Wolof - Senegal"
+    },
+    {
+        "Hex": "048C",
+        "Dec": 1164,
+        "Country code": "prs-AF",
+        "Meaning": "Dari - Afghanistan"
+    },
+    {
+        "Hex": "0491",
+        "Dec": 1169,
+        "Country code": "gd-GB",
+        "Meaning": "Scottish Gaelic - United Kingdom"
+    },
+    {
+        "Hex": "0492",
+        "Dec": 1170,
+        "Country code": "ku-Arab-IQ",
+        "Meaning": "Central Kurdish - Iraq"
+    },
+    {
+        "Hex": "0801",
+        "Dec": 2049,
+        "Country code": "ar-IQ",
+        "Meaning": "Arabic - Iraq"
+    },
+    {
+        "Hex": "0803",
+        "Dec": 2051,
+        "Country code": "ca-ES-valencia",
+        "Meaning": "Valencian - Valencia"
+    },
+    {
+        "Hex": "0804",
+        "Dec": 2052,
+        "Country code": "zh-CN",
+        "Meaning": "Chinese (Simplified) - China"
+    },
+    {
+        "Hex": "0807",
+        "Dec": 2055,
+        "Country code": "de-CH",
+        "Meaning": "German - Switzerland"
+    },
+    {
+        "Hex": "0809",
+        "Dec": 2057,
+        "Country code": "en-GB",
+        "Meaning": "English - United Kingdom"
+    },
+    {
+        "Hex": "080A",
+        "Dec": 2058,
+        "Country code": "es-MX",
+        "Meaning": "Spanish - Mexico"
+    },
+    {
+        "Hex": "080C",
+        "Dec": 2060,
+        "Country code": "fr-BE",
+        "Meaning": "French - Belgium"
+    },
+    {
+        "Hex": "0810",
+        "Dec": 2064,
+        "Country code": "it-CH",
+        "Meaning": "Italian - Switzerland"
+    },
+    {
+        "Hex": "0813",
+        "Dec": 2067,
+        "Country code": "nl-BE",
+        "Meaning": "Dutch - Belgium"
+    },
+    {
+        "Hex": "0814",
+        "Dec": 2068,
+        "Country code": "nn-NO",
+        "Meaning": "Norwegian (Nynorsk) - Norway"
+    },
+    {
+        "Hex": "0816",
+        "Dec": 2070,
+        "Country code": "pt-PT",
+        "Meaning": "Portuguese - Portugal"
+    },
+    {
+        "Hex": "081A",
+        "Dec": 2074,
+        "Country code": "sr-Latn-CS",
+        "Meaning": "Serbian (Latin) - Serbia and Montenegro"
+    },
+    {
+        "Hex": "081D",
+        "Dec": 2077,
+        "Country code": "sv-FI",
+        "Meaning": "Swedish - Finland"
+    },
+    {
+        "Hex": "0820",
+        "Dec": 2080,
+        "Country code": "ur-IN",
+        "Meaning": "Urdu - (reserved)"
+    },
+    {
+        "Hex": "082C",
+        "Dec": 2092,
+        "Country code": "az-Cyrl-AZ",
+        "Meaning": "Azeri (Cyrillic) - Azerbaijan"
+    },
+    {
+        "Hex": "082E",
+        "Dec": 2094,
+        "Country code": "dsb-DE",
+        "Meaning": "Lower Sorbian - Germany"
+    },
+    {
+        "Hex": "0832",
+        "Dec": 2098,
+        "Country code": "tn-BW",
+        "Meaning": "Setswana / Tswana - Botswana"
+    },
+    {
+        "Hex": "083B",
+        "Dec": 2107,
+        "Country code": "se-SE",
+        "Meaning": "Sami (Northern) - Sweden"
+    },
+    {
+        "Hex": "083C",
+        "Dec": 2108,
+        "Country code": "ga-IE",
+        "Meaning": "Irish - Ireland"
+    },
+    {
+        "Hex": "083E",
+        "Dec": 2110,
+        "Country code": "ms-BN",
+        "Meaning": "Malay - Brunei Darassalam"
+    },
+    {
+        "Hex": "0843",
+        "Dec": 2115,
+        "Country code": "uz-Cyrl-UZ",
+        "Meaning": "Uzbek (Cyrillic) - Uzbekistan"
+    },
+    {
+        "Hex": "0845",
+        "Dec": 2117,
+        "Country code": "bn-BD",
+        "Meaning": "Bangla - Bangladesh"
+    },
+    {
+        "Hex": "0846",
+        "Dec": 2118,
+        "Country code": "pa-Arab-PK",
+        "Meaning": "Punjabi - Pakistan"
+    },
+    {
+        "Hex": "0849",
+        "Dec": 2121,
+        "Country code": "ta-LK",
+        "Meaning": "Tamil - Sri Lanka"
+    },
+    {
+        "Hex": "0850",
+        "Dec": 2128,
+        "Country code": "mn-Mong-CN",
+        "Meaning": "Mongolian (Mong) - Mongolia"
+    },
+    {
+        "Hex": "0859",
+        "Dec": 2137,
+        "Country code": "sd-Arab-PK",
+        "Meaning": "Sindhi - Pakistan"
+    },
+    {
+        "Hex": "085D",
+        "Dec": 2141,
+        "Country code": "iu-Latn-CA",
+        "Meaning": "Inuktitut (Latin) - Canada"
+    },
+    {
+        "Hex": "085F",
+        "Dec": 2143,
+        "Country code": "tzm-Latn-DZ",
+        "Meaning": "Tamazight (Latin) - Algeria"
+    },
+    {
+        "Hex": "0867",
+        "Dec": 2151,
+        "Country code": "ff-Latn-SN",
+        "Meaning": "Pular - Senegal"
+    },
+    {
+        "Hex": "086B",
+        "Dec": 2155,
+        "Country code": "quz-EC",
+        "Meaning": "Quechua - Ecuador"
+    },
+    {
+        "Hex": "0873",
+        "Dec": 2163,
+        "Country code": "ti-ER",
+        "Meaning": "(reserved) - (reserved)"
+    },
+    {
+        "Hex": "0873",
+        "Dec": 2163,
+        "Country code": "ti-ER",
+        "Meaning": "Tigrinya - Eritrea"
+    },
+    {
+        "Hex": "0C01",
+        "Dec": 3073,
+        "Country code": "ar-EG",
+        "Meaning": "Arabic - Egypt"
+    },
+    {
+        "Hex": "0C04",
+        "Dec": 3076,
+        "Country code": "zh-HK",
+        "Meaning": "Chinese - Hong Kong SAR"
+    },
+    {
+        "Hex": "0C07",
+        "Dec": 3079,
+        "Country code": "de-AT",
+        "Meaning": "German - Austria"
+    },
+    {
+        "Hex": "0C09",
+        "Dec": 3081,
+        "Country code": "en-AU",
+        "Meaning": "English - Australia"
+    },
+    {
+        "Hex": "0C0A",
+        "Dec": 3082,
+        "Country code": "es-ES",
+        "Meaning": "Spanish - Spain"
+    },
+    {
+        "Hex": "0C0C",
+        "Dec": 3084,
+        "Country code": "fr-CA",
+        "Meaning": "French - Canada"
+    },
+    {
+        "Hex": "0C1A",
+        "Dec": 3098,
+        "Country code": "sr-Cyrl-CS",
+        "Meaning": "Serbian (Cyrillic) - Serbia and Montenegro"
+    },
+    {
+        "Hex": "0C3B",
+        "Dec": 3131,
+        "Country code": "se-FI",
+        "Meaning": "Sami (Northern) - Finland"
+    },
+    {
+        "Hex": "0C6B",
+        "Dec": 3179,
+        "Country code": "quz-PE",
+        "Meaning": "Quechua - Peru"
+    },
+    {
+        "Hex": "1001",
+        "Dec": 4097,
+        "Country code": "ar-LY",
+        "Meaning": "Arabic - Libya"
+    },
+    {
+        "Hex": "1004",
+        "Dec": 4100,
+        "Country code": "zh-SG",
+        "Meaning": "Chinese - Singapore"
+    },
+    {
+        "Hex": "1007",
+        "Dec": 4103,
+        "Country code": "de-LU",
+        "Meaning": "German - Luxembourg"
+    },
+    {
+        "Hex": "1009",
+        "Dec": 4105,
+        "Country code": "en-CA",
+        "Meaning": "English - Canada"
+    },
+    {
+        "Hex": "100A",
+        "Dec": 4106,
+        "Country code": "es-GT",
+        "Meaning": "Spanish - Guatemala"
+    },
+    {
+        "Hex": "100C",
+        "Dec": 4108,
+        "Country code": "fr-CH",
+        "Meaning": "French - Switzerland"
+    },
+    {
+        "Hex": "101A",
+        "Dec": 4122,
+        "Country code": "hr-BA",
+        "Meaning": "Croatian (Latin) - Bosnia and Herzegovina"
+    },
+    {
+        "Hex": "103B",
+        "Dec": 4155,
+        "Country code": "smj-NO",
+        "Meaning": "Sami (Lule) - Norway"
+    },
+    {
+        "Hex": "105F",
+        "Dec": 4191,
+        "Country code": "tzm-Tfng-MA",
+        "Meaning": "Central Atlas Tamazight (Tifinagh) - Morocco"
+    },
+    {
+        "Hex": "1401",
+        "Dec": 5121,
+        "Country code": "ar-DZ",
+        "Meaning": "Arabic - Algeria"
+    },
+    {
+        "Hex": "1404",
+        "Dec": 5124,
+        "Country code": "zh-MO",
+        "Meaning": "Chinese - Macao SAR"
+    },
+    {
+        "Hex": "1407",
+        "Dec": 5127,
+        "Country code": "de-LI",
+        "Meaning": "German - Liechtenstein"
+    },
+    {
+        "Hex": "1409",
+        "Dec": 5129,
+        "Country code": "en-NZ",
+        "Meaning": "English - New Zealand"
+    },
+    {
+        "Hex": "140A",
+        "Dec": 5130,
+        "Country code": "es-CR",
+        "Meaning": "Spanish - Costa Rica"
+    },
+    {
+        "Hex": "140C",
+        "Dec": 5132,
+        "Country code": "fr-LU",
+        "Meaning": "French - Luxembourg"
+    },
+    {
+        "Hex": "141A",
+        "Dec": 5146,
+        "Country code": "bs-Latn-BA",
+        "Meaning": "Bosnian (Latin) - Bosnia and Herzegovina"
+    },
+    {
+        "Hex": "143B",
+        "Dec": 5179,
+        "Country code": "smj-SE",
+        "Meaning": "Sami (Lule) - Sweden"
+    },
+    {
+        "Hex": "1801",
+        "Dec": 6145,
+        "Country code": "ar-MA",
+        "Meaning": "Arabic - Morocco"
+    },
+    {
+        "Hex": "1809",
+        "Dec": 6153,
+        "Country code": "en-IE",
+        "Meaning": "English - Ireland"
+    },
+    {
+        "Hex": "180A",
+        "Dec": 6154,
+        "Country code": "es-PA",
+        "Meaning": "Spanish - Panama"
+    },
+    {
+        "Hex": "180C",
+        "Dec": 6156,
+        "Country code": "fr-MC",
+        "Meaning": "French - Monaco"
+    },
+    {
+        "Hex": "181A",
+        "Dec": 6170,
+        "Country code": "sr-Latn-BA",
+        "Meaning": "Serbian (Latin) - Bosnia and Herzegovina"
+    },
+    {
+        "Hex": "183B",
+        "Dec": 6203,
+        "Country code": "sma-NO",
+        "Meaning": "Sami (Southern) - Norway"
+    },
+    {
+        "Hex": "1C01",
+        "Dec": 7169,
+        "Country code": "ar-TN",
+        "Meaning": "Arabic - Tunisia"
+    },
+    {
+        "Hex": "1c09",
+        "Dec": 7177,
+        "Country code": "en-ZA",
+        "Meaning": "English - South Africa"
+    },
+    {
+        "Hex": "1C0A",
+        "Dec": 7178,
+        "Country code": "es-DO",
+        "Meaning": "Spanish - Dominican Republic"
+    },
+    {
+        "Hex": "1C1A",
+        "Dec": 7194,
+        "Country code": "sr-Cyrl-BA",
+        "Meaning": "Serbian (Cyrillic) - Bosnia and Herzegovina"
+    },
+    {
+        "Hex": "1C3B",
+        "Dec": 7227,
+        "Country code": "sma-SE",
+        "Meaning": "Sami (Southern) - Sweden"
+    },
+    {
+        "Hex": "2001",
+        "Dec": 8193,
+        "Country code": "ar-OM",
+        "Meaning": "Arabic - Oman"
+    },
+    {
+        "Hex": "2009",
+        "Dec": 8201,
+        "Country code": "en-JM",
+        "Meaning": "English - Jamaica"
+    },
+    {
+        "Hex": "200A",
+        "Dec": 8202,
+        "Country code": "es-VE",
+        "Meaning": "Spanish - Venezuela"
+    },
+    {
+        "Hex": "201A",
+        "Dec": 8218,
+        "Country code": "bs-Cyrl-BA",
+        "Meaning": "Bosnian (Cyrillic) - Bosnia and Herzegovina"
+    },
+    {
+        "Hex": "203B",
+        "Dec": 8251,
+        "Country code": "sms-FI",
+        "Meaning": "Sami (Skolt) - Finland"
+    },
+    {
+        "Hex": "2401",
+        "Dec": 9217,
+        "Country code": "ar-YE",
+        "Meaning": "Arabic - Yemen"
+    },
+    {
+        "Hex": "2409",
+        "Dec": 9225,
+        "Country code": "en-029",
+        "Meaning": "English - Caribbean"
+    },
+    {
+        "Hex": "240A",
+        "Dec": 9226,
+        "Country code": "es-CO",
+        "Meaning": "Spanish - Colombia"
+    },
+    {
+        "Hex": "241A",
+        "Dec": 9242,
+        "Country code": "sr-Latn-RS",
+        "Meaning": "Serbian (Latin) - Serbia"
+    },
+    {
+        "Hex": "243B",
+        "Dec": 9275,
+        "Country code": "smn-FI",
+        "Meaning": "Sami (Inari) - Finland"
+    },
+    {
+        "Hex": "2801",
+        "Dec": 10241,
+        "Country code": "ar-SY",
+        "Meaning": "Arabic - Syria"
+    },
+    {
+        "Hex": "2809",
+        "Dec": 10249,
+        "Country code": "en-BZ",
+        "Meaning": "English - Belize"
+    },
+    {
+        "Hex": "280A",
+        "Dec": 10250,
+        "Country code": "es-PE",
+        "Meaning": "Spanish - Peru"
+    },
+    {
+        "Hex": "281A",
+        "Dec": 10266,
+        "Country code": "sr-Cyrl-RS",
+        "Meaning": "Serbian (Cyrillic) - Serbia"
+    },
+    {
+        "Hex": "2C01",
+        "Dec": 11265,
+        "Country code": "ar-JO",
+        "Meaning": "Arabic - Jordan"
+    },
+    {
+        "Hex": "2C09",
+        "Dec": 11273,
+        "Country code": "en-TT",
+        "Meaning": "English - Trinidad and Tobago"
+    },
+    {
+        "Hex": "2C0A",
+        "Dec": 11274,
+        "Country code": "es-AR",
+        "Meaning": "Spanish - Argentina"
+    },
+    {
+        "Hex": "2C1A",
+        "Dec": 11290,
+        "Country code": "sr-Latn-ME",
+        "Meaning": "Serbian (Latin) - Montenegro"
+    },
+    {
+        "Hex": "3001",
+        "Dec": 12289,
+        "Country code": "ar-LB",
+        "Meaning": "Arabic - Lebanon"
+    },
+    {
+        "Hex": "3009",
+        "Dec": 12297,
+        "Country code": "en-ZW",
+        "Meaning": "English - Zimbabwe"
+    },
+    {
+        "Hex": "300A",
+        "Dec": 12298,
+        "Country code": "es-EC",
+        "Meaning": "Spanish - Ecuador"
+    },
+    {
+        "Hex": "301A",
+        "Dec": 12314,
+        "Country code": "sr-Cyrl-ME",
+        "Meaning": "Serbian (Cyrillic) - Montenegro"
+    },
+    {
+        "Hex": "3401",
+        "Dec": 13313,
+        "Country code": "ar-KW",
+        "Meaning": "Arabic - Kuwait"
+    },
+    {
+        "Hex": "3409",
+        "Dec": 13321,
+        "Country code": "en-PH",
+        "Meaning": "English - Philippines"
+    },
+    {
+        "Hex": "340A",
+        "Dec": 13322,
+        "Country code": "es-CL",
+        "Meaning": "Spanish - Chile"
+    },
+    {
+        "Hex": "3801",
+        "Dec": 14337,
+        "Country code": "ar-AE",
+        "Meaning": "Arabic - U.A.E."
+    },
+    {
+        "Hex": "380A",
+        "Dec": 14346,
+        "Country code": "es-UY",
+        "Meaning": "Spanish - Uruguay"
+    },
+    {
+        "Hex": "3C01",
+        "Dec": 15361,
+        "Country code": "ar-BH",
+        "Meaning": "Arabic - Bahrain"
+    },
+    {
+        "Hex": "3C0A",
+        "Dec": 15370,
+        "Country code": "es-PY",
+        "Meaning": "Spanish - Paraguay"
+    },
+    {
+        "Hex": "4001",
+        "Dec": 16385,
+        "Country code": "ar-QA",
+        "Meaning": "Arabic - Qatar"
+    },
+    {
+        "Hex": "4009",
+        "Dec": 16393,
+        "Country code": "en-IN",
+        "Meaning": "English - India"
+    },
+    {
+        "Hex": "400A",
+        "Dec": 16394,
+        "Country code": "es-BO",
+        "Meaning": "Spanish - Bolivia"
+    },
+    {
+        "Hex": "4409",
+        "Dec": 17417,
+        "Country code": "en-MY",
+        "Meaning": "English - Malaysia"
+    },
+    {
+        "Hex": "440A",
+        "Dec": 17418,
+        "Country code": "es-SV",
+        "Meaning": "Spanish - El Salvador"
+    },
+    {
+        "Hex": "4809",
+        "Dec": 18441,
+        "Country code": "en-SG",
+        "Meaning": "English - Singapore"
+    },
+    {
+        "Hex": "480A",
+        "Dec": 18442,
+        "Country code": "es-HN",
+        "Meaning": "Spanish - Honduras"
+    },
+    {
+        "Hex": "4C0A",
+        "Dec": 19466,
+        "Country code": "es-NI",
+        "Meaning": "Spanish - Nicaragua"
+    },
+    {
+        "Hex": "500A",
+        "Dec": 20490,
+        "Country code": "es-PR",
+        "Meaning": "Spanish - Puerto Rico"
+    },
+    {
+        "Hex": "540A",
+        "Dec": 21514,
+        "Country code": "es-US",
+        "Meaning": "Spanish - United States"
+    },
+    {
+        "Hex": "7C04",
+        "Dec": 31748,
+        "Country code": "zh-CHT",
+        "Meaning": "Chinese - Traditional"
+    }
+]

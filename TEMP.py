@@ -28,26 +28,29 @@ def get_keyboard_layout_list():
 
 # קריאה לפונקציה והדפסת התוצאה
 input_languages = get_keyboard_layout_list()
+
+
+
 print(f"Installed input languages: {input_languages}")
 print(f"Number of input languages: {len(input_languages)}")
 
 
 
-
-import locale
-
-# פונקציה לתרגום מזהה LCID לשפה
-def lcid_to_language(lcid):
-    try:
-        # שימוש במילון windows_locale לקבלת קוד השפה
-        language_code = locale.windows_locale[lcid]
-        return language_code
-    except KeyError:
-        return f"Unknown LCID: {lcid}"
-
-# דוגמה לשימוש
-lcids = [1033, 1037, 3073, 13313, 1061, 12300, 5132]
-languages = [lcid_to_language(lcid) for lcid in lcids]
-
-# הדפסת השפות
-print(languages)
+#
+# import locale
+#
+# # פונקציה לתרגום מזהה LCID לשפה
+# def lcid_to_language(lcid):
+#     try:
+#         # שימוש במילון windows_locale לקבלת קוד השפה
+#         language_code = locale.windows_locale[lcid]
+#         return language_code
+#     except KeyError:
+#         return f"Unknown LCID: {lcid}"
+#
+# # דוגמה לשימוש
+# lcids = [1033, 1037, 3073, 13313, 1061, 31748, 5132, 1064, 2077, 1053]
+# languages = [lcid_to_language(lcid) for lcid in lcids]
+#
+# # הדפסת השפות
+# print(languages)

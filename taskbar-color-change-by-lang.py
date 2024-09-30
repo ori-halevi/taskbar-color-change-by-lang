@@ -25,6 +25,7 @@ from PIL import Image, ImageDraw
 from pathlib import Path
 from pystray import Icon, MenuItem, Menu
 from pystray import MenuItem as item, Menu, Icon
+from Find_out_installd_keyboard_layout import get_all_system_keyboard_layouts
 
 __version__ = 'v1.1.3'
 
@@ -197,6 +198,17 @@ def is_caps_lock_on():
     return ctypes.WinDLL("User32.dll").GetKeyState(0x14) & 0xffff != 0
 
 
+def sync_taskbar_color_with_preference_lang(taskbar_manager):
+    """
+    Synchronize the taskbar color with the preferred lang.
+    """
+    if load_user_preferences() == get_current_language().split()[0] and taskbar_manager.get_is_ColorPrevalence_on_or_off():
+        taskbar_manager.toggle_color_prevalence()
+        logging.info("taskbar color changed!")
+    elif load_user_preferences() != get_current_language().split()[0] and not taskbar_manager.get_is_ColorPrevalence_on_or_off():
+        taskbar_manager.toggle_color_prevalence()
+        logging.info("taskbar color changed!")
+
 def get_current_language():
     """
     Returns the current keyboard layout language of the foreground window.
@@ -243,11 +255,21 @@ def monitor_registry_key(hkey, subkey, taskbar_manager):
 
     try:
         while not stop_event.is_set():
+            print("ya")
             # Wait for event or until stopped
             wait_result = WaitForSingleObject(event, -1)  # Wait for -1 ms (infinity)
             if wait_result == 0:  # 0 indicates that the event occurred
                 logging.info("Registry key has been modified.")
-                taskbar_manager.toggle_color_prevalence()  # Toggle color on taskbar
+
+                if not is_caps_lock_on():
+                    taskbar_manager.toggle_color_prevalence()  # Toggle color on taskbar
+                elif is_caps_lock_on():
+                    if load_user_preferences() == "English" and taskbar_manager.get_is_ColorPrevalence_on_or_off():
+                        # if the user prefer that on English will there not be color and now there is
+                        taskbar_manager.toggle_color_prevalence()
+
+                        #TODO here we need to listen to when the Caps get off again and when it does to do sync_taskbar_color_with_preference_lang()
+
                 # Register again to continue receiving notifications
                 result = RegNotifyChangeKeyValue(
                     reg_key_handle,
@@ -299,23 +321,23 @@ def setup_tray_icon(taskbar_manager):
     Sets up the system tray icon with options to toggle color and quit the application.
     """
     # רשימת השפות הנתמכות
-    supported_languages = ['English', 'Hebrew', 'French', 'Spanish']
-
-    # משתנה לשמירת השפה הנוכחית עם סימן V
-    preferred_language = 'י'  # ברירת מחדל
+    supported_languages = all_OS_keyboard_layouts
 
     # יצירת תפריט עם רשימת השפות
     def set_preferred_language(language):
-        nonlocal preferred_language
-        preferred_language = language
-        print(f"Preferred language set to: {preferred_language}")
+        print("Setting preferred language", language)
+
+        save_user_preferences(language)
+
+        print(f"Preferred language set to: {language}")
         # לאחר שינוי השפה יש לעדכן את התפריט כולו
-        icon.update_menu()
+        menu
 
     # פונקציה ליצירת פריט תפריט עבור כל שפה
     def create_language_item(language):
+        print("here", load_user_preferences() )
         return item(
-            f"{language} {'✔' if language == preferred_language else ''}",
+            f"{language} {'✔' if language == load_user_preferences() else ''}",
             lambda: set_preferred_language(language)
         )
 
@@ -357,21 +379,12 @@ def show_update_notification(icon, latest_version):
 if __name__ == "__main__":
     taskbar_manager = TaskbarManager()  # Initialize the taskbar manager
 
-    print(get_current_language().split()[0])
-    print(load_user_preferences())
+    all_OS_keyboard_layouts = list()
+    for keyboard_layout in get_all_system_keyboard_layouts():
+        all_OS_keyboard_layouts.append(keyboard_layout.split()[0])
+    print(all_OS_keyboard_layouts)
 
-    print(taskbar_manager.get_is_ColorPrevalence_on_or_off())
-
-
-    if load_user_preferences() == get_current_language().split()[0] and taskbar_manager.get_is_ColorPrevalence_on_or_off():
-        taskbar_manager.toggle_color_prevalence()
-        print("1111")
-    elif load_user_preferences() != get_current_language().split()[0] and not taskbar_manager.get_is_ColorPrevalence_on_or_off():
-        taskbar_manager.toggle_color_prevalence()
-        print("22222")
-
-
-
+    sync_taskbar_color_with_preference_lang(taskbar_manager)
 
     tray_icon = setup_tray_icon(taskbar_manager)  # Set up the system tray icon
 

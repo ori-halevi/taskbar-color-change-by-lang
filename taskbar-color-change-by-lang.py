@@ -362,8 +362,7 @@ if __name__ == "__main__":
 
     print(taskbar_manager.get_is_ColorPrevalence_on_or_off())
 
-    if load_user_preferences() == get_current_language().split()[0]:
-        print("im here")
+
     if load_user_preferences() == get_current_language().split()[0] and taskbar_manager.get_is_ColorPrevalence_on_or_off():
         taskbar_manager.toggle_color_prevalence()
         print("1111")

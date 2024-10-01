@@ -14,6 +14,7 @@ inside the key:
 """
 import os
 import json
+from pynput import keyboard
 import webbrowser
 import requests
 import ctypes
@@ -190,12 +191,12 @@ def save_user_preferences(preferred_language):
 
 
 
-def is_caps_lock_on():
-    """
-    Checks if the user has the caps lock on.
-    :return: True or False
-    """
-    return ctypes.WinDLL("User32.dll").GetKeyState(0x14) & 0xffff != 0
+# def is_caps_lock_on():
+#     """
+#     Checks if the user has the caps lock on.
+#     :return: True or False
+#     """
+#     return ctypes.WinDLL("User32.dll").GetKeyState(0x14) & 0xffff != 0
 
 
 def sync_taskbar_color_with_preference_lang(taskbar_manager):
@@ -261,14 +262,20 @@ def monitor_registry_key(hkey, subkey, taskbar_manager):
             if wait_result == 0:  # 0 indicates that the event occurred
                 logging.info("Registry key has been modified.")
 
-                if not is_caps_lock_on():
+                if not is_caps_lock_on_BOOL:
                     taskbar_manager.toggle_color_prevalence()  # Toggle color on taskbar
-                elif is_caps_lock_on():
+                    print(is_caps_lock_on_BOOL)
+                    print("heRe1")
+                elif is_caps_lock_on_BOOL:
+                    print(is_caps_lock_on_BOOL)
+                    print("heRe2")
                     if load_user_preferences() == "English" and taskbar_manager.get_is_ColorPrevalence_on_or_off():
                         # if the user prefer that on English will there not be color and now there is
                         taskbar_manager.toggle_color_prevalence()
 
                         #TODO here we need to listen to when the Caps get off again and when it does to do sync_taskbar_color_with_preference_lang()
+                        continue
+
 
                 # Register again to continue receiving notifications
                 result = RegNotifyChangeKeyValue(
@@ -302,7 +309,7 @@ def create_image(width, height, color1, color2):
     return image
 
 
-def on_quit(icon, item):
+def on_quit(icon):
     """
     Callback to quit the application when the tray icon is clicked.
     """
@@ -314,66 +321,86 @@ def on_quit(icon, item):
     os._exit(0)
 
 
-
-
-def setup_tray_icon(taskbar_manager):
+def setup_tray_icon(taskbar_manager) -> 'Icon':
     """
     Sets up the system tray icon with options to toggle color and quit the application.
+    It also provides a sub-menu for changing the preferred language.
+
+    Args:
+        taskbar_manager: An object responsible for managing the taskbar appearance.
+
+    Returns:
+        Icon: The created system tray icon.
     """
-    # רשימת השפות הנתמכות
-    supported_languages = all_OS_keyboard_layouts
 
-    def is_selected(menu_item):
-        print(menu_item, "sss")
-        return menu_item.text == load_user_preferences()
+    # Function to be executed when clicking an item in the sub-menu
+    def select_sub_item(icon, menu_item) -> None:
+        """
+        Handles the selection of a sub-menu item, updates user preferences,
+        and refreshes the icon's menu.
 
-    # יצירת תפריט עם רשימת השפות
-    def set_preferred_language(language):
-        print("Setting preferred language", language)
+        Args:
+            icon: The tray icon object.
+            menu_item: The selected menu item.
+        """
+        # Save the user's preference for the selected item
+        save_user_preferences(str(menu_item))
 
-        save_user_preferences(language)
+        # Refresh the menu to display changes
+        icon.update_menu()
 
-        print(f"Preferred language set to: {language}")
-        # לאחר שינוי השפה יש לעדכן את התפריט כולו
+        # Sync the taskbar color with the selected language preference
+        sync_taskbar_color_with_preference_lang(taskbar_manager)
 
-    # פונקציה ליצירת פריט תפריט עבור כל שפה
-    def create_language_item(language):
-        print("here", load_user_preferences() )
-        return item(
-            f"{language} {'✔' if language == load_user_preferences() else ''}",
-            lambda: set_preferred_language(language)
-        )
+    # Function to check if an item is selected and mark it with a check
+    def is_selected(menu_item) -> bool:
+        """
+        Checks if the given menu item is the currently selected one.
 
-    # יצירת תפריט השפות
-    def language_menu():
-        # יצירת פריטי תפריט מתוך רשימת פריסות המקלדת
+        Args:
+            menu_item: The menu item to check.
+
+        Returns:
+            bool: True if the menu item is selected, False otherwise.
+        """
+        return menu_item.text == str(load_user_preferences())
+
+    def sub_menu() -> 'Menu':
+        """
+        Creates a sub-menu for selecting a preferred language.
+
+        Returns:
+            Menu: The language selection sub-menu.
+        """
+        # Create menu items from the all_OS_keyboard_layouts array
         menu_items = [
-            item(layout, load_user_preferences, checked=is_selected)
+            item(layout, select_sub_item, checked=is_selected)
             for layout in all_OS_keyboard_layouts
         ]
 
-        # יצירת תפריט עם הפריטים
+        # Return a menu with the items
         return Menu(*menu_items)
+
+    # Create the main menu with an item that leads to the sub-menu
+    menu = Menu(
+        item('Change Preferred Language', sub_menu()),  # Language menu
+        item('Toggle Color', lambda: taskbar_manager.toggle_color_prevalence()),  # Option to toggle taskbar color
+        item('Check out more versions', lambda: open_git_releases()),  # Option to check for updates
+        item('Quit', lambda: on_quit(icon))  # Option to quit the application
+    )
+
     try:
-        # נסיון לטעון אייקון קיים
+        # Attempt to load an existing icon image
         icon_path = Path(__file__).resolve().parent / 'windows-11-change-taskbar-color.png'
         icon_image = Image.open(icon_path)
     except FileNotFoundError:
-        # יצירת אייקון ברירת מחדל במקרה שהקובץ לא נמצא
+        # Create a default icon if the file is not found
         icon_image = create_image(64, 64, 'purple', 'lightblue')
 
-    # הגדרת התפריט עבור אייקון המגש
-    menu = Menu(
-        item('Change Preferred Language', language_menu()),  # תפריט השפות
-        item('Toggle Color', lambda: taskbar_manager.toggle_color_prevalence()),  # אפשרות להחליף צבע
-        item('Check out more versions', lambda: open_git_releases()),  # אפשרות לבדוק עדכונים
-        item('Quit', lambda: icon.stop())  # אפשרות לצאת
-    )
-
-    # יצירת אייקון המגש
+    # Create the tray icon (must provide some image for the icon)
     icon = Icon("Language Toggle", icon_image, "Language Toggle", menu)
 
-    # הפעלת אייקון המגש עם חוט נפרד
+    # Start the tray icon in a separate thread
     threading.Thread(target=icon.run, daemon=True).start()
 
     return icon
@@ -385,7 +412,97 @@ def show_update_notification(icon, latest_version):
     icon.notify(f"גרסה חדשה זמינה: {latest_version}!", title="עדכון זמין")
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# This function checks the actual state of CapsLock
+def is_caps_lock_on():
+    hll_dll = ctypes.WinDLL("User32.dll")
+    vk_caps_lock = 0x14  # Virtual key code for CapsLock
+    # GetKeyState returns 1 if CapsLock is on, otherwise 0
+    return hll_dll.GetKeyState(vk_caps_lock) & 0x0001 != 0
+
+# This function is called when the key state changes
+def on_press(key):
+    global is_caps_lock_on_BOOL
+    try:
+        if key == keyboard.Key.caps_lock:
+            # Check the actual state of CapsLock
+            caps_state = is_caps_lock_on()
+            if caps_state:
+                print("CapsLock is ON.")
+                is_caps_lock_on_BOOL = True
+                if load_user_preferences() == "English" and taskbar_manager.get_is_ColorPrevalence_on_or_off():
+                    # if the user prefer that on English will there not be color and now there is
+                    taskbar_manager.toggle_color_prevalence()
+                elif not load_user_preferences() == "English" and not taskbar_manager.get_is_ColorPrevalence_on_or_off():
+                    taskbar_manager.toggle_color_prevalence()
+            else:
+                print("CapsLock is OFF.")
+                is_caps_lock_on_BOOL = False
+                sync_taskbar_color_with_preference_lang(taskbar_manager)
+    except AttributeError:
+        pass
+
+def listen_to_caps_lock():
+    # Create a listener that waits for keyboard events
+    with keyboard.Listener(on_press=on_press) as listener:
+        listener.join()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if __name__ == "__main__":
+
+    is_caps_lock_on_BOOL = bool(is_caps_lock_on())
+    print(is_caps_lock_on_BOOL)
+
+    threading.Thread(target=listen_to_caps_lock).start()
+
+
     taskbar_manager = TaskbarManager()  # Initialize the taskbar manager
 
     all_OS_keyboard_layouts = list()

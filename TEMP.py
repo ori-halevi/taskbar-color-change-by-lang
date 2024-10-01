@@ -1,56 +1,38 @@
-import ctypes
-import locale
+from pystray import MenuItem as item, Menu, Icon
+from PIL import Image  # pystray דורש תמונה לאייקון
 
-# הטעינת הספרייה user32.dll
-user32 = ctypes.windll.user32
+# משתנה גלובלי לשמירת הפריט הנבחר
+selected_item = None
 
-def get_keyboard_layout_list():
-    # קבלת מספר פריסות המקלדת (שפות הקלט) המותקנות במערכת
-    n = user32.GetKeyboardLayoutList(0, None)
-    if n == 0:
-        return []
+# פונקציה שתופעל בעת לחיצה על פריט בתפריט הבן
+def select_sub_item(icon, menu_item):
+    global selected_item
+    # עדכון הפריט הנבחר
+    selected_item = menu_item.text
+    # רענון התפריט כדי להציג את השינוי
+    icon.update_menu()
 
-    # יצירת מערך לשמירת פריסות המקלדת
-    klid_array = (ctypes.c_uint * n)()
-    user32.GetKeyboardLayoutList(n, klid_array)
+# פונקציה שבודקת אם פריט נבחר ומסמנת אותו עם V
+def is_selected(menu_item):
+    return menu_item.text == selected_item
 
-    # רשימה לשמירת שמות השפות
-    languages = []
+def sub_menu():
+    # יצירת תפריט בן עם אפשרות לבחירה
+    sub_menu = Menu(
+        item('Sub Item 1', select_sub_item, checked=is_selected),
+        item('Sub Item 2', select_sub_item, checked=is_selected)
+    )
+    return sub_menu
 
-    # מעברים על הפריסות ומחפשים את שם השפה מה-LCID
-    for klid in klid_array:
-        lang_id = klid & 0xFFFF  # חילוץ ה-LANGID
-        print(lang_id)
-        language = locale.windows_locale.get(lang_id, f"Unknown (ID: {lang_id})")
-        languages.append(language)
+# יצירת תפריט ראשי עם פריט שמוביל לתת-תפריט
+menu = Menu(
+    item('Main Item', sub_menu()),  # זהו הפריט שמוביל לתת-תפריט
+    item('Exit', lambda icon, item: icon.stop())  # פריט ליציאה
+)
 
-    return languages
+# יצירת אייקון (חובה לספק תמונה כלשהי לאייקון)
+icon_image = Image.new('RGB', (64, 64), color=(73, 109, 137))
 
-# קריאה לפונקציה והדפסת התוצאה
-input_languages = get_keyboard_layout_list()
-
-
-
-print(f"Installed input languages: {input_languages}")
-print(f"Number of input languages: {len(input_languages)}")
-
-
-
-#
-# import locale
-#
-# # פונקציה לתרגום מזהה LCID לשפה
-# def lcid_to_language(lcid):
-#     try:
-#         # שימוש במילון windows_locale לקבלת קוד השפה
-#         language_code = locale.windows_locale[lcid]
-#         return language_code
-#     except KeyError:
-#         return f"Unknown LCID: {lcid}"
-#
-# # דוגמה לשימוש
-# lcids = [1033, 1037, 3073, 13313, 1061, 31748, 5132, 1064, 2077, 1053]
-# languages = [lcid_to_language(lcid) for lcid in lcids]
-#
-# # הדפסת השפות
-# print(languages)
+# יצירת אייקון והפעלתו עם התפריט
+icon = Icon('test', icon_image, menu=menu)
+icon.run()

@@ -323,6 +323,10 @@ def setup_tray_icon(taskbar_manager):
     # רשימת השפות הנתמכות
     supported_languages = all_OS_keyboard_layouts
 
+    def is_selected(menu_item):
+        print(menu_item, "sss")
+        return menu_item.text == load_user_preferences()
+
     # יצירת תפריט עם רשימת השפות
     def set_preferred_language(language):
         print("Setting preferred language", language)
@@ -331,7 +335,6 @@ def setup_tray_icon(taskbar_manager):
 
         print(f"Preferred language set to: {language}")
         # לאחר שינוי השפה יש לעדכן את התפריט כולו
-        menu
 
     # פונקציה ליצירת פריט תפריט עבור כל שפה
     def create_language_item(language):
@@ -343,8 +346,14 @@ def setup_tray_icon(taskbar_manager):
 
     # יצירת תפריט השפות
     def language_menu():
-        return Menu(*(create_language_item(lang) for lang in supported_languages))
+        # יצירת פריטי תפריט מתוך רשימת פריסות המקלדת
+        menu_items = [
+            item(layout, load_user_preferences, checked=is_selected)
+            for layout in all_OS_keyboard_layouts
+        ]
 
+        # יצירת תפריט עם הפריטים
+        return Menu(*menu_items)
     try:
         # נסיון לטעון אייקון קיים
         icon_path = Path(__file__).resolve().parent / 'windows-11-change-taskbar-color.png'

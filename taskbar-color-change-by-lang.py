@@ -14,6 +14,7 @@ inside the key:
 """
 
 import os
+import shutil
 import json
 import sys
 from pynput import keyboard
@@ -248,7 +249,7 @@ def setup_tray_icon() -> 'Icon':
         item('Load on Startup', toggle_startup_on_boot, checked=is_startup_on_boot_enabled),  # Load on startup option
         item('━ ━━ ━━━ ━━━━ ━━━━━ ━━━━━━ ━━━━', lambda: None),  # A fake separator
         item('Change Preferred Language', create_language_sub_menu()),  # Language menu
-        item('Toggle Taskbar Color (Temporary)', lambda: taskbar_manager.toggle_color_prevalence()),  # Taskbar color toggle
+        item('Toggle Taskbar Color (Temporary)', lambda: taskbar_manager.toggle_color_prevalence()),    # Taskbar color toggle
         item('Check for Updates', lambda: open_git_releases()),  # Option to check for updates
         item('Quit', lambda: quit_application())  # Option to quit the application
     )
@@ -336,8 +337,8 @@ def main():
         start_monitor_language_in_registry_key(-1, main_toggle_taskbar_color_condition)
 
 
-
 if __name__ == "__main__":
+
     # Global stop event to control the monitoring thread
     stop_event = threading.Event()
 

@@ -1,5 +1,5 @@
-from from_Keyboard_Layouts import get_keyboard_layout_texts
-from from_User_Profile import get_language_with_meanings
+from modules.from_Keyboard_Layouts import get_keyboard_layout_texts
+from modules.from_User_Profile import get_language_with_meanings
 
 def get_all_system_keyboard_layouts() -> list[str]:
     """

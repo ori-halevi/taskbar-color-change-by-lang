@@ -1,5 +1,12 @@
 import winreg
+import logging
 
+# Condition to toggle to see DEBUG logging
+DEBUG = False
+
+# Set up logging
+logging.basicConfig(level=logging.DEBUG if DEBUG else None,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 
 def read_keyboard_layouts() -> list[str]:
     """
@@ -24,7 +31,7 @@ def read_keyboard_layouts() -> list[str]:
                     break  # Exit when there are no more values
 
     except Exception as e:
-        print(f"Error: {e}")
+        logging.error(f"Error reading keyboard layouts: {e}")
 
     return layouts
 
@@ -46,9 +53,10 @@ def get_layout_text(layout_id: str) -> str | None:
             layout_text = winreg.QueryValueEx(reg_key, "Layout Text")[0]
             return layout_text
     except FileNotFoundError:
+        logging.warning(f"Layout ID {layout_id} not found in registry.")
         return None  # The key does not exist
     except Exception as e:
-        print(f"Error reading {layout_id}: {e}")
+        logging.error(f"Error reading {layout_id}: {e}")
         return None
 
 

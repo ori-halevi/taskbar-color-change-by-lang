@@ -1,6 +1,13 @@
 import winreg
 import json
+import logging
 
+# Condition to toggle to see DEBUG logging
+DEBUG = False
+
+# Set up logging
+logging.basicConfig(level=logging.DEBUG if DEBUG else None,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 
 def get_languages_from_user_profile() -> list[str]:
     """
@@ -24,9 +31,9 @@ def get_languages_from_user_profile() -> list[str]:
                     languages.append(lang)
 
     except FileNotFoundError:
-        print("The 'Languages' key was not found.")
+        logging.info("The 'Languages' key was not found.")
     except Exception as e:
-        print(f"Error reading Languages: {e}")
+        logging.info(f"Error reading Languages: {e}")
 
     return languages
 

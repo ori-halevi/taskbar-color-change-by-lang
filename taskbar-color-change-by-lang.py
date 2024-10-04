@@ -34,7 +34,7 @@ from modules.Language_change_monitor import *
 from modules.StartAndTaskbarColorManager import StartAndTaskbarColorManager
 
 # Version of this release
-__version__ = 'v2.0.0'
+__version__ = 'v2.1.0'
 
 # Condition to toggle to see DEBUG logging
 DEBUG = False
@@ -290,14 +290,17 @@ def on_press(key):
             caps_state = is_caps_lock_on()
             if caps_state:
                 logging.info("CapsLock is ON.")
+                # if the user prefer that on English will there not be color and now there is
                 if load_user_preferences() == "English" and taskbar_manager.get_color_prevalence_status():
-                    # if the user prefer that on English will there not be color and now there is
                     taskbar_manager.toggle_color_prevalence()
-                elif not load_user_preferences() == "English" and not taskbar_manager.get_color_prevalence_status():
+                # if the user prefer that on English will there be color and now there is not
+                elif load_user_preferences() != "English" and not taskbar_manager.get_color_prevalence_status():
                     taskbar_manager.toggle_color_prevalence()
+
             else:
                 logging.info("CapsLock is OFF")
                 sync_taskbar_color_with_preference_lang()
+
     except AttributeError:
         pass
 

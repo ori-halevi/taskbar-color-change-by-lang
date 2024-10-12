@@ -34,7 +34,7 @@ from modules.Language_change_monitor import *
 from modules.StartAndTaskbarColorManager import StartAndTaskbarColorManager
 
 # Version of this release
-__version__ = 'v2.1.0'
+__version__ = 'v2.1.1'
 
 # Condition to toggle to see DEBUG logging
 DEBUG = False

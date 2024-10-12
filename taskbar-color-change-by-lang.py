@@ -330,11 +330,11 @@ def main():
 
     def main_toggle_taskbar_color_condition():
         if not is_caps_lock_on():
-            taskbar_manager.toggle_color_prevalence()  # Toggle color on taskbar
+            threading.Thread(target=taskbar_manager.toggle_color_prevalence).start()  # Toggle color on taskbar in a separate thread
         elif is_caps_lock_on():
             if load_user_preferences() == "English" and taskbar_manager.get_color_prevalence_status():
-                # if the user prefer that on English will there not be color and now there is
-                taskbar_manager.toggle_color_prevalence()
+                # if the user prefers that in English there will be no color and now there is
+                threading.Thread(target=taskbar_manager.toggle_color_prevalence).start()  # Toggle color in a separate thread
 
     while not stop_event.is_set():
         start_monitor_language_in_registry_key(-1, main_toggle_taskbar_color_condition)
